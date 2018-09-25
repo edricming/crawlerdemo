@@ -28,5 +28,4 @@ for x in hot_key:
     print(i+1,end=" ")
     print(x)
     # print(x.encode('latin-1').decode('unicode_escape'))
-    # print(hot_url[i])
     i=i+1
