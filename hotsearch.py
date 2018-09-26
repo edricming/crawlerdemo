@@ -19,13 +19,22 @@ except:
 
 # soup = BeautifulSoup(html, "lxml")
 # html = str(soup.find_all('script')[-2])[525:-12]
-# print(html)
-# hot_key = re.findall(r'(?<=list_realtimehot\\">)[\w ]*\\.*?(?=<\\/a>\\n)|(?<=realtime_\d{5}\\"\\n>)\w*\\.*?(?=<\\/a>\\n)', html)
-hot_key = re.findall(r'(?<=Refer=top" target="_blank">).*?(?=</a>)|(?<=realtimehot_ad" word=").*?(?=" url_show)', html)
-# hot_url= re.findall(r'(?<=\\/weibo\\/)[%,A-Z,a-z,0-9]*?(?=&Refer=top\\" target)', html)
+#print(html)
 i=0
-for x in hot_key:
-    print(i+1,end=" ")
-    print(x)
-    # print(x.encode('latin-1').decode('unicode_escape'))
-    i=i+1
+#hot_key = re.findall(r'(?<=list_realtimehot\\">)[\w ]*\\.*?(?=<\\/a>\\n)|(?<=realtime_\d{5}\\"\\n>)[\w ]*\\.*?(?=<\\/a>\\n)', html)
+hot_key = re.findall(r'(?<=Refer=top" target="_blank">).*?(?=</a>)|(?<=realtimehot_ad" word=").*?(?=" url_show)', html)
+if len(hot_key)==0:
+    hot_key = re.findall(r'(?<=list_realtimehot\\">)[\w ]*\\.*?(?=<\\/a>\\n)|(?<=realtime_\d{5}\\"\\n>)[\w ]*\\.*?(?=<\\/a>\\n)', html)
+    for x in hot_key:
+        print(i + 1, end=" ")
+        print(x.encode('latin-1').decode('unicode_escape'))
+        i=i+1
+else:
+    for x in hot_key:
+        print(i + 1, end=" ")
+        print(x)
+        i = i + 1
+
+
+# hot_url= re.findall(r'(?<=\\/weibo\\/)[%,A-Z,a-z,0-9]*?(?=&Refer=top\\" target)', html)
+
